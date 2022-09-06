@@ -16,13 +16,15 @@ public class Main
 
             if(text.toLowerCase().equals("exit"))
             {
-                System.out.println("_-_-_-Thank you for using this program\nHave a nice day-_-_-_");
+                System.out.println("_-_-_-Thank you for using our program\nHave a nice day-_-_-_");
                 return;
             }
 
             Huffman obj = new Huffman();
             String data  = obj.encode(text);
             System.out.println(data);
+
+            System.out.println("decoded data :"+obj.decode(data));
         }
     }
     public static void showIntro()

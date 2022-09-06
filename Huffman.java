@@ -16,7 +16,7 @@ public class Huffman
         Map<Character, String> codemap = createCodeMap();
         StringBuilder data = new StringBuilder();
 
-        for (char c : ch) data.append(codemap.get(c));
+        for (char c : ch) data.append(codemap.get(c)+"");
 
         return data.toString();
     }
@@ -50,5 +50,23 @@ public class Huffman
         Map<Character, String> result = new TreeMap<>();
         root.fillCodeMap(result, "");
         return result;
+    }
+    public String decode(String data) {
+        Node current = root;
+
+        StringBuilder result = new StringBuilder();
+        for (char ch : data.toCharArray()) {
+            if (ch == '0') {
+                current = current.getLeft();
+            } else {
+                current = current.getRight();
+            }
+
+            if (current.isLeaf()) {
+                result.append(current.getSymbol());
+                current = root;
+            }
+        }
+        return result.toString();
     }
 }
